@@ -1,0 +1,84 @@
+import React from "react";
+import Product from "./Product";
+import "./App.css";
+
+const products = [1, 2, 3, 4, 5, 6, 7]; // Example 7 products
+
+const App = () => {
+  return (
+    <div className="product-grid">
+      {products.map((p, i) => (
+        <Product key={i} />
+      ))}
+    </div>
+  );
+};
+
+export default App;
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-left: 200px;   
+  padding: 20px;      
+  box-sizing: border-box;
+}
+
+.Main-container {
+  flex: 1 1 calc(33.333% - 15px);   
+  max-width: calc(33.333% - 15px);
+  box-sizing: border-box;
+}
+/* Default (large screens / desktop) */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-left: 200px;   /* adjust for sidebar */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.Main-container {
+  flex: 1 1 calc(33.333% - 15px);  /* 3 per row */
+  max-width: calc(33.333% - 15px);
+  box-sizing: border-box;
+}
+
+/* 📱 Extra small devices (mobile < 480px) */
+@media (max-width: 480px) {
+  .Main-container {
+    flex: 1 1 100%;   /* 1 per row */
+    max-width: 100%;
+  }
+  .product-grid {
+    margin-left: 0;   /* hide sidebar offset for mobile */
+  }
+}
+
+/* 📱 Small devices (mobile landscape / small tablets < 768px) */
+@media (max-width: 768px) {
+  .Main-container {
+    flex: 1 1 calc(50% - 15px);   /* 2 per row */
+    max-width: calc(50% - 15px);
+  }
+  .product-grid {
+    margin-left: 0;   /* sidebar usually collapses on small screens */
+  }
+}
+
+/* 💻 Medium devices (tablets / small laptops < 1024px) */
+@media (max-width: 1024px) {
+  .Main-container {
+    flex: 1 1 calc(33.333% - 15px);  /* 3 per row */
+    max-width: calc(33.333% - 15px);
+  }
+}
+
+/* 🖥️ Large devices (desktops < 1440px) */
+@media (max-width: 1440px) {
+  .Main-container {
+    flex: 1 1 calc(25% - 15px);  /* 4 per row if wide enough */
+    max-width: calc(25% - 15px);
+  }
+}
